@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <com.arieftb.pdfsign.utils.SignView
+        android:id="@+id/signv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_main_footer" />
+
+    <LinearLayout
+        android:id="@+id/ll_main_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:padding="@dimen/padmar_4">
+
+        <Button
+            android:id="@+id/btn_sign_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/padmar_4"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Save"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_12" />
+
+        <Button
+            android:id="@+id/btn_sign_clear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padmar_4"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Clear"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_12" />
+
+    </LinearLayout>
+
+</RelativeLayout>
