@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".ui.MainActivity">
 
 
@@ -13,35 +14,55 @@
         android:layout_height="match_parent"
         android:layout_above="@id/ll_main_footer" />
 
+    <ImageView
+        android:id="@+id/iv_sign_add"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_main_footer" />
+
     <LinearLayout
         android:id="@+id/ll_main_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorWhite"
+        android:background="@color/colorGray"
         android:orientation="horizontal"
         android:padding="@dimen/padmar_4">
 
-        <Button
-            android:id="@+id/btn_sign_save"
+        <ImageButton
+            android:id="@+id/btn_sign_add"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginRight="@dimen/padmar_4"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="Save"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_add_box_black_24dp"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/text_12" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/btn_sign_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/padmar_4"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_save_black_24dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_12" />
+
+        <ImageButton
             android:id="@+id/btn_sign_clear"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="@dimen/padmar_4"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="Clear"
-            android:textColor="@color/colorWhite"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_delete_black_24dp"
+            android:textColor="@color/colorGray1"
             android:textSize="@dimen/text_12" />
 
     </LinearLayout>
