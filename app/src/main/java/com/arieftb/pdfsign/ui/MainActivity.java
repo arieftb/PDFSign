@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setTitle("Tanda Tangan");
+
         signView = findViewById(R.id.signv_main);
         ivSignAdd = findViewById(R.id.iv_sign_add);
         btnSignAdd = findViewById(R.id.btn_sign_add);
@@ -113,14 +115,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             pathImage = data.getData();
             setUriPhoto(pathImage);
         } else if (requestCode == MANAGER_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            //            pathPdf = data.getData();
             pathPdf = Uri.parse(RealPathUtil.getRealPath(getApplicationContext(), data.getData()));
+            previewPDF(pathPdf);
         } else {
             Toast.makeText(getApplicationContext(), "Gagal Mengambil Data", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void previewPDF(Uri pathPdf) {
+        Intent intent = new Intent(getApplicationContext(), PreviewPDFActivity.class);
+        intent.putExtra("PATHPDF", String.valueOf(pathPdf));
+        intent.putExtra("PATHSIGN", pathSign);
+        startActivity(intent);
+    }
+
     private void setUriPhoto(Uri pathImage) {
         Log.d(TAG, "setUriPhoto: " + pathImage);
+
+        pathSign = String.valueOf(pathImage);
 
         ivSignAdd.setVisibility(View.VISIBLE);
         signView.setVisibility(View.GONE);
