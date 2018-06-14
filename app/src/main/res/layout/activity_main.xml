@@ -8,7 +8,7 @@
     tools:context=".ui.MainActivity">
 
 
-    <com.github.barteksc.pdfviewer.PDFView
+    <com.arieftb.pdfsign.utils.SignView
         android:id="@+id/signv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
