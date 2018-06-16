@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -124,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void previewPDF(Uri pathPdf) {
+        createParentDir();
         Intent intent = new Intent(getApplicationContext(), PreviewPDFActivity.class);
         intent.putExtra("PATHPDF", String.valueOf(pathPdf));
         intent.putExtra("PATHSIGN", pathSign);
@@ -158,6 +160,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
             }, 0);
+        } else {
+
         }
     }
 
@@ -171,6 +175,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 checkLocationPermission();
             }
+        }
+    }
+
+    private void createParentDir() {
+        File outputDir = new File(Environment.getExternalStorageDirectory() + "/" + getString(R.string.app_name));
+
+        if (outputDir.mkdir()) {
+            Log.d(TAG, "createParentDir: true");
         }
     }
 }

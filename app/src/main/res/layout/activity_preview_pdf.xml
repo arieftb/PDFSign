@@ -11,5 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_convert_pdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/padmar_16"
+        app:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_add_white_24dp"/>
+
 
 </RelativeLayout>
