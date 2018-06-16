@@ -1,13 +1,7 @@
 package com.arieftb.pdfsign.ui;
 
 import android.app.ProgressDialog;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-
-import android.graphics.RectF;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Environment;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,18 +12,12 @@ import android.widget.Toast;
 import com.arieftb.pdfsign.R;
 import com.arieftb.pdfsign.utils.PdfToImg;
 import com.github.barteksc.pdfviewer.PDFView;
-import com.github.barteksc.pdfviewer.listener.OnDrawListener;
 import com.github.barteksc.pdfviewer.listener.OnErrorListener;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 
-import org.vudroid.core.DecodeServiceBase;
-import org.vudroid.pdfdroid.codec.PdfContext;
-import org.vudroid.pdfdroid.codec.PdfPage;
-
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,8 +48,6 @@ public class PreviewPDFActivity extends AppCompatActivity implements OnPageChang
 
     private void previewPDF(String pathPDF) {
 
-//        progressDialog = ProgressDialog.show(PreviewPDFActivity.this, "", "Opening ...");
-
         pdfFile = new File(pathPDF);
 
         getSupportActionBar().setTitle(pdfFile.getName());
@@ -82,7 +68,6 @@ public class PreviewPDFActivity extends AppCompatActivity implements OnPageChang
 
     @Override
     public void loadComplete(int nbPages) {
-//        progressDialog.dismiss();
         fabConvertPdf.setOnClickListener(this);
     }
 
@@ -103,9 +88,13 @@ public class PreviewPDFActivity extends AppCompatActivity implements OnPageChang
         progressDialog.dismiss();
 
         if (output != null) {
-            for (int i = 0; i < output.size(); i++) {
-                Log.d(TAG, "processFinish: photo " + output.get(i));
-            }
+//            for (int i = 0; i < output.size(); i++) {
+//                Log.d(TAG, "processFinish: photo " + output.get(i));
+//            }
+            Intent intent = new Intent(getApplicationContext(), ChoosePdfPageActivity.class);
+            intent.putStringArrayListExtra("PAGELIST", (ArrayList<String>) output);
+            intent.putExtra("PATHSIGN", pathSign);
+            startActivity(intent);
         }
     }
 

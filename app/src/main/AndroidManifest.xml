@@ -24,7 +24,8 @@
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".ui.PreviewPDFActivity"></activity>
+        <activity android:name=".ui.PreviewPDFActivity" />
+        <activity android:name=".ui.ChoosePdfPageActivity"></activity>
     </application>
 
 </manifest>
